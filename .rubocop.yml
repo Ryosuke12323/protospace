@@ -1,0 +1,45 @@
+# 無視するディレクトリ
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - bin/*
+    - db/**/*
+    - vendor/**/*
+    - 'config/**/*'
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'Rakefile'
+
+# Rails適用
+Rails:
+  Enabled: true
+
+# 日本語コメントを許可
+AsciiComments:
+  Enabled: false
+
+# top-level documentation を判定しない
+Style/Documentation:
+  Enabled: false
+
+# module::class を許可 (例: Foo::BarController)
+ClassAndModuleChildren:
+  Enabled: false
+
+# line is too long を判定しないディレクトリを設定
+Metrics/LineLength:
+  Exclude:
+    - 'lib/tasks/**/*'
+    - 'lib/**/spec/*'
+    - 'spec/**/*'
+
+# Block has too many lines を判定しないディレクトリを設定
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/**/*'
+    - 'lib/**/spec/*'
+    - 'spec/**/*'
+
+# frozen string literal comment を判定しない
+Style/FrozenStringLiteralComment:
+  Enabled: false
