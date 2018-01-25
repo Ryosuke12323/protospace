@@ -1,24 +1,78 @@
-# README
+# protospace DB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Model
+|Model          |
+:---------------:
+|user           |
+|prototype      |
+|prototype_image|
+|like           |
+|comment        |
 
-Things you may want to cover:
+## User
+|column|type|option|
+|:-:|:_:|:-:|
+|name|string|null: false, unique: true|
+|email||use 'deviese'|
+|password||use 'deviese'|
+|profile|text||
+|avatar|text||
 
-* Ruby version
+### association
+```
+has_many :prototypes
+has_many :likes
+has_many :comments
+```
 
-* System dependencies
+## Prototype
+|column|type|option|
+|:-:|:-:|:-:|
+|title|text|null: false|
+|catch_copy|text||
+|concept|text||
+|user_id|integer|null: false, foreign_key: true|
 
-* Configuration
+### association
+```
+belongs_to :user
+has_many :prototype_images
+has_many :likes
+has_many :comments
+```
+ 
+ ## Prototype_images
+ |column|type|option|
+ |:-:|:-:|:-:|
+ |content|text|null: false|
+ |status|integer||
+ |prototype_id|integer|null: false, foreign_key: true|
+ +
+ ### association
+ ```
+ belons_to :prototype
+ ```
+ ## Like
+ |column|type|option|
+ |:-:|:-:|:-:|
+ |user_id|integer|null: false, foreign_key: true|
+ |prototype_id|integer|null: false, foreignkey: true|
+ 
+### association
+```
+belongs_to :user
+belongs_to :prototype
+```
 
-* Database creation
+## Comment
+|column|type|option|
+|:-:|:-:|:-:|
+|content|text|null: false|
+|user_id|integer|foreign_key: true, null: false|
+|prototype_id|integer|foreign_key: true, null: false|
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### association
+```
+belongs_to :user
+belongs_to :prototype
+```
