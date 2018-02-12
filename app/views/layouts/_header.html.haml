@@ -4,16 +4,14 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand(href="/")
-      = image_tag("logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "36px")
+    = link_to image_tag('logo.png', alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "36px"), class: 'navbar-brand', action: :index
+    
     .navbar-collapse.collapse.navbar-responsive-collapse
-      //not login
+      -# not login
       %ul.nav.navbar-nav.navbar-right
         %li
-          .btn.btn-primary.navbar-btn
-            %a{href: "/login"}
-              Get Started
-      //login
+          = link_to 'Get started', "/login", class: 'btn btn-primary navbar-btn'
+      -# login
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", href: "#", role: "button"}
@@ -25,6 +23,7 @@
             %li
               %a{href: "#"} Logout
         %li
-          .btn.btn-primary.navbar-btn
-            %a{href: "/proto/new"}
-              New Proto
+          = button_to 'New Proto', new_prototype_path, class: 'btn btn-primary navbar-btn', method: :get
+          -# .btn.btn-primary.navbar-btn
+          -#   %a{href: "/proto/new"}
+          -#     New Proto
